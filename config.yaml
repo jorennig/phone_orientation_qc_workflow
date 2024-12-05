@@ -1,0 +1,52 @@
+device_data_path: 'test-runs'
+
+balance_file: 'pre_format.csv'
+digital_features: ['a', 'b']
+span_duration_bounds: [28, 32]
+
+steps_qc: 5
+
+coordinates_span: [-10, 10]
+max_ratio: 2
+grav_acc_constant: 9.80665
+grav_acc_threshold: 2
+
+n_threshold: 10
+p_threshold: 0.001
+
+cluster_mismatch: '1'
+orientation_mismatch: 'z'
+
+features: ['percent_main_orientation_total', 'changes_percent_main_orientation', 'main_cluster', 'percent_main_cluster', 'changes_percent_cluster']
+
+clinical: 'clinical.csv'
+clinical_features: ['a', 'b', 'b']
+
+kmeans_args: {'init': 'random', 'n_init': 10, 'max_iter': 300, 'random_state': 42}
+max_clust: 11
+
+n_clusters:
+    - 2
+    - 3
+    - 4
+
+combine_clusters: {4: 1}
+cluster_flag: [2, 3]
+
+merge_cols: ['subject_id', 'device_id', 'test_run_begin', 'test_repeat', 'test_run_type', 'day_of_study']
+
+coordinates_dict: {'x_y': [x, y], 'x_z': [x, z], 'y_z': [y, z]}
+
+qc_checks_old: ['a', 'b']
+qc_checks_new: ['span_duration_ok', 'cluster_ok', 'new_qc_pass']
+
+qc_checks: ['span_duration_ok', 'cluster_ok', 'new_qc_pass']
+
+quantile_threshold: 0.05
+
+dimensions:
+    - 'x'
+    - 'y'
+    - 'z'
+
+step_features: ['n_steps', 'steps_ok']
